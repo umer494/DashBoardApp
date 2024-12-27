@@ -1,0 +1,48 @@
+<div>
+    <h2>Angular Binding Examples Form (Template-Driven)</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <!-- (ngSubmit)="onSubmit(form)" is an example of event binding. -->
+
+        <!-- Username -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.username" required />
+        <!-- [(ngModel)]="user.username" is an example of two-way data binding. -->
+        <p>Your username is: {{ user.username }}</p>
+        <!-- {{ user.username }} is an example of interpolation binding. -->
+        <div *ngIf="form.submitted && !user.username" style="color: red">
+            Username is required.
+        </div>
+        <!-- *ngIf="form.submitted && !user.username" is an example of structural directive binding. -->
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" required email />
+        <!-- [(ngModel)]="user.email" is an example of two-way data binding. -->
+        <p>Your email is: {{ user.email }}</p>
+        <!-- {{ user.email }} is an example of interpolation binding. -->
+        <div *ngIf="form.submitted && !user.email" style="color: red">
+            Email is required.
+        </div>
+        <!-- *ngIf="form.submitted && !user.email" is an example of structural directive binding. -->
+
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" [(ngModel)]="user.age" required min="18" max="100" />
+        <!-- [(ngModel)]="user.age" is an example of two-way data binding. -->
+        <p>Your age is: {{ user.age }}</p>
+        <!-- {{ user.age }} is an example of interpolation binding. -->
+        <div *ngIf="form.submitted && (!user.age || user.age < 18 || user.age > 100)" style="color: red">
+            Age must be between 18 and 100.
+        </div>
+        <!-- *ngIf="form.submitted && (!user.age || user.age < 18 || user.age > 100)" is an example of structural directive binding. -->
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+        <!-- (click)="..." could also be used here for event binding, but it is handled via (ngSubmit) on the form. -->
+    </form>
+<form #Form="ngForm" (ngSubmit)="onSubmit(form)">
+    <label for="username">Username</label>
+    <input type="text" id="name"[(ngModel)]="user.age">
+    <p>your age is :{{user.age}}</p>
+</form>
+</div>

@@ -1,0 +1,16 @@
+<form #form="ngForm"(ngSubmit)="OnSubmit(form)">
+<label for="Name">Name</label>
+<input type="text" name="Name" id="Name"[(ngModel)]="data.Name"[placeholder]="'Enter your name'"required>
+<p>{{data.Name}}</p>
+<label for="City">City</label>
+<input type="text" name="City" id="City" [(ngModel)]="data.City" [placeholder]="'Enter your City'"required>
+<p>{{data.City}}</p>
+<label for="Age">Age</label>
+<input type="number" name="Age" id="Age" [(ngModel)]="data.Age" [placeholder]="'Enter your Age'"required>
+<p>{{data.Age}}</p>
+<label for="Phone">Phone</label>
+<input type="Number" name="Phone" id="Phone" [(ngModel)]="data.Phone" [placeholder]="'Enter your Phone'"required>
+<p>{{data.Phone}}</p>
+<button type="submit">Submit Form</button>
+
+</form>

@@ -1,0 +1,68 @@
+<h2>Dashboard</h2>
+
+<!-- Add New Entry -->
+<h3>Add New Entry</h3>
+<form (ngSubmit)="addNewEntry()">
+    <input type="text" [(ngModel)]="newEntry.title" name="title" placeholder="Title" required>
+    <input type="number" [(ngModel)]="newEntry.value" name="value" placeholder="Value" required>
+    <input type="text" [(ngModel)]="newEntry.description" name="description" placeholder="Description" required>
+    <button type="submit">Add</button>
+</form>
+
+<!-- Update Entry -->
+<h3>Update Entry</h3>
+<form (ngSubmit)="updateEntry()">
+    <input type="text" [(ngModel)]="updatedEntry.title" name="title" placeholder="Title" required>
+    <input type="number" [(ngModel)]="updatedEntry.value" name="value" placeholder="Value" required>
+    <input type="text" [(ngModel)]="updatedEntry.description" name="description" placeholder="Description" required>
+    <button type="submit">Update</button>
+</form>
+
+<!-- Dashboard Data -->
+<h3>Dashboard Data</h3>
+<table *ngIf="dashboardData.length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Value</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of dashboardData">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.value }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+                <button (click)="deleteEntry(item.id)">Delete</button>
+                <button (click)="populateUpdateForm(item)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Loading message if no data -->
+<div *ngIf="dashboardData.length === 0">
+    <p>Loading...</p>
+</div>
+<div *ngIf="dashboardData.length==0">
+    <p>no data.....</p>
+
+</div>
+<table *ngIf="dashboardData.length>0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Session</th>
+            <th>Branch</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let items of dashboardData">
+        <tr>
+            <td>{{items.name}}</td>
+        </tr>
+    </tbody>
+</table>

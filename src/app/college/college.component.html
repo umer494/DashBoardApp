@@ -1,0 +1,26 @@
+<p>college works!</p>
+<table *ngIf="CollegeData.length>0">
+    <thead>
+        <tr>
+         <th>Code</th> 
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>zip</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of CollegeData">
+                <td>{{items.cCollegeCode}}</td>
+                <td>{{items.cCollegeName}}</td>
+                <td>{{items.vCollegeAddress}}</td>
+                <td>{{items.cCity}}</td>
+                <td>{{items.cState}}</td>
+                <td>{{items.cZip}}</td>
+                <td>{{items.cPhone}}</td>
+            </tr>
+        </tbody>
+
+</table>

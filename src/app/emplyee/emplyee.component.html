@@ -1,0 +1,48 @@
+<div *ngIf="employees && employees.length > 0">
+    <ul>
+        <li *ngFor="let employee of employees">{{ employee.name }}</li>
+    </ul>
+</div>
+<p *ngIf="employees && employees.length === 0">No employees available.</p>
+
+<div class="employee-section">
+    <h2>Employee List</h2>
+    <table class="employee-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{ employee.EmployeeId }}</td>
+                <td>{{ employee.EmployeeName }}</td>
+                <td>{{ employee.Description }}</td>
+                <td>
+                    <button (click)="deleteEmployee(employee.EmployeeId)">Delete</button>
+                    <button (click)="updatedEmployee = employee">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Add New Employee</h3>
+    <form (ngSubmit)="addEmployee()">
+        <input type="text" [(ngModel)]="newEmployee.EmployeeName" placeholder="Name" name="name" required />
+        <input type="text" [(ngModel)]="newEmployee.Description" placeholder="Description" name="description"
+            required />
+        <button type="submit">Add</button>
+    </form>
+
+    <h3>Edit Employee</h3>
+    <form (ngSubmit)="updateEmployee()">
+        <input type="number" [(ngModel)]="updatedEmployee.EmployeeId" placeholder="ID" name="id" readonly />
+        <input type="text" [(ngModel)]="updatedEmployee.EmployeeName" placeholder="Name" name="name" required />
+        <input type="text" [(ngModel)]="updatedEmployee.Description" placeholder="Description" name="description"
+            required />
+        <button type="submit">Update</button>
+    </form>
+</div>
